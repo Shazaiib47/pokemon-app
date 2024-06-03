@@ -5,21 +5,28 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 const SearchBar = ({ onSearch }) => {
-  const [query, setQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const handleClear = () => {
-    setQuery('');
-    onSearch('');
+  const handleChange = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+    onSearch(query);
   };
 
   const handleSubmit = () => {
-    onSearch(query);
+    // Add your logic for submitting the search query here
+    console.log('Submitting search query:', searchQuery);
+  };
+
+  const handleClear = () => {
+    setSearchQuery('');
+    onSearch(''); // Clear the search query in the parent component as well
   };
 
   return (
     <Box display="flex" flexDirection="column" alignItems="center" mb={4}>
       <Typography variant="h4" color="white" gutterBottom>
-        Pokémon Directory
+        Pokémon Search
       </Typography>
       <Box display="flex" alignItems="center" width="80%" maxWidth="600px">
         <TextField
@@ -27,15 +34,15 @@ const SearchBar = ({ onSearch }) => {
           label="Search Pokémon"
           variant="outlined"
           fullWidth
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          value={searchQuery}
+          onChange={handleChange}
           size="small"
           sx={{ backgroundColor: 'white', borderRadius: 1 }}
         />
         <Button
           variant="contained"
           color="primary"
-          onClick={handleSubmit}
+          onClick={handleSubmit} // Uncomment to enable submit functionality
           sx={{ marginLeft: 1 }}
         >
           Submit
@@ -43,7 +50,7 @@ const SearchBar = ({ onSearch }) => {
         <Button
           variant="contained"
           color="secondary"
-          onClick={handleClear}
+          onClick={handleClear} // Uncomment to enable clear functionality
           sx={{ marginLeft: 1 }}
         >
           Clear

@@ -9,7 +9,7 @@ import './styles.css';
 
 const App = () => {
   const [pokemons, setPokemons] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredPokemons, setFilteredPokemons] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
 
@@ -23,13 +23,19 @@ const App = () => {
         })
       );
       setPokemons(fetchedPokemons);
+      setFilteredPokemons(fetchedPokemons);
     };
 
     fetchPokemons();
   }, []);
 
   const handleSearch = (query) => {
-    setSearchQuery(query.toLowerCase());
+    console.log("Search query:", query);
+    const filtered = pokemons.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(query.toLowerCase())
+    );
+    console.log("Filtered:", filtered);
+    setFilteredPokemons(filtered);
   };
 
   const handleCardClick = (pokemon) => {
@@ -41,10 +47,6 @@ const App = () => {
     setIsDetailOpen(false);
     setSelectedPokemon(null);
   };
-
-  const filteredPokemons = pokemons.filter((pokemon) =>
-    pokemon.name.toLowerCase().includes(searchQuery)
-  );
 
   return (
     <Container>
