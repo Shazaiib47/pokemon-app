@@ -1,0 +1,23 @@
+body {
+    background-color: #001f3f;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* #search-bar {
+    margin: 20px 0;
+  } */
+  
+  .MuiCard-root {
+    background-color: #1a1a1a;
+    color: white;
+  }
+  
+  .MuiTypography-root {
+    text-align: center;
+  }
+  
+  .MuiButton-root {
+    display: block;
+    margin: 0 auto;
+  }
+  
