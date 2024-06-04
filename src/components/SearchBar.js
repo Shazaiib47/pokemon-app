@@ -14,13 +14,12 @@ const SearchBar = ({ onSearch }) => {
   };
 
   const handleSubmit = () => {
-    // Add your logic for submitting the search query here
     console.log('Submitting search query:', searchQuery);
   };
 
   const handleClear = () => {
     setSearchQuery('');
-    onSearch(''); // Clear the search query in the parent component as well
+    onSearch('');
   };
 
   return (
@@ -42,7 +41,7 @@ const SearchBar = ({ onSearch }) => {
         <Button
           variant="contained"
           color="primary"
-          onClick={handleSubmit} // Uncomment to enable submit functionality
+          onClick={handleSubmit}
           sx={{ marginLeft: 1 }}
         >
           Submit
@@ -50,7 +49,7 @@ const SearchBar = ({ onSearch }) => {
         <Button
           variant="contained"
           color="secondary"
-          onClick={handleClear} // Uncomment to enable clear functionality
+          onClick={handleClear}
           sx={{ marginLeft: 1 }}
         >
           Clear
